@@ -28,7 +28,7 @@ func TestWildcard(t *testing.T) {
 		return
 	}
 
-	list := doc.SelectNodes("ns", "*")
+	list := doc.SelectNode("", "xml").SelectNodes("ns", "*")
 
 	if len(list) != 1 {
 		t.Errorf("Wrong number of child elements. Expected 1, got %d.", len(list))
@@ -94,7 +94,7 @@ func TestNodeSearch(t *testing.T) {
 		return
 	}
 
-	nodes := doc.SelectNodes("", "item")
+	nodes := doc.SelectNodesRecursive("", "item")
 	if len(nodes) == 0 {
 		t.Errorf("SelectNodes(): no nodes found.")
 		return
